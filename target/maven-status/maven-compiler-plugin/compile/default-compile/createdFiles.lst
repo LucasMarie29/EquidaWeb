@@ -1,3 +1,5 @@
+test\TestCategVente.class
+model\Lieu.class
 model\Cheval.class
 sio\equidaweb\resources\JakartaEE10Resource.class
 database\DaoCheval.class

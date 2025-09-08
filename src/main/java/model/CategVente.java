@@ -5,6 +5,8 @@ public class CategVente {
     
     private int code;
     private String libelle;
+    
+    private CategVente categVente;
 
     public CategVente() {
     }
@@ -23,6 +25,14 @@ public class CategVente {
 
     public void setLibelle(String libelle) {
         this.libelle = libelle;
+    }
+
+    public void setCategVente(CategVente categVente) {
+        this.categVente = categVente;
+    }
+
+    public CategVente getCategVente() {
+        return categVente;
     }
     
     

@@ -1,12 +1,43 @@
 package test;
 
-import model.Cheval;
-import model.Race;
+import model.CategVente;
+import model.Lieu;
 import model.Vente;
 
 public class TestVente {
     public static void main (String args[]){
-    
+        
+        
+        Vente v = new Vente();
+        v.setId(1);
+        v.setNom("Vente num1");
+        
+        CategVente  cv = new CategVente();
+        cv.setCode(3);
+        cv.setLibelle("Hiver");
+        
+        v.setCategVente(cv);
+        
+        
+        Lieu l = new Lieu();
+        l.setId(1);
+        l.setVille("Caen");
+        l.setNbBoxes(5);
+        l.setCommentaires("test");
+        
+        v.setLieu(l);
+        
+        System.out.println("Dans la Vente : " +  v.getId());
+        System.out.println("Il y a la categorie : ");
+        System.out.println(v.getCategVente().getCode() + " " + v.getCategVente().getLibelle());
+          
+        
+        System.out.println(v.getLieu().getVille());
+        
+        
+        
+        
+    /*
         Vente v = new Vente();
         v.setId(1);
         v.setNom("Vente1");
@@ -36,7 +67,7 @@ public class TestVente {
             System.out.println("Cheval numéro : " + v.getId() + " " + v.getNom());
         }
         
-        
+        */
         
         
     }

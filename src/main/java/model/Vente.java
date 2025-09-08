@@ -12,7 +12,7 @@ public class Vente {
     
     private CategVente categVente;
     
-    private ArrayList<Race> lesRaces;
+    private Lieu lieu;
 
     public Vente() {
     }
@@ -48,20 +48,12 @@ public class Vente {
     public void setCategVente(CategVente categVente) {
         this.categVente = categVente;
     }
-
-    public void setLesRaces(ArrayList<Race> lesRaces) {
-        this.lesRaces = lesRaces;
-    }
-
-    public ArrayList<Race> getLesRaces() {
-        return lesRaces;
-    }
     
-    public void addRace(Race uneRace){
-        if (lesRaces ==null ){
-            lesRaces = new ArrayList<Race>();
-        }
-        lesRaces.add(uneRace);
+    public Lieu getLieu() {
+        return lieu;
     }
+    public void setLieu(Lieu lieu) {
+        this.lieu = lieu;
+    }   
     
 }
