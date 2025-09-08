@@ -6,6 +6,8 @@ public class Race {
 
     private int id;
     private String nom;
+    
+    private Vente vente;
 
     private ArrayList<Cheval> lesChevaux ;
 
@@ -38,4 +40,14 @@ public class Race {
         }
         lesChevaux.add(unCheval);
     }
+
+    public Vente getVente() {
+        return vente;
+    }
+
+    public void setVente(Vente vente) {
+        this.vente = vente;
+    }
+    
+    
 }
