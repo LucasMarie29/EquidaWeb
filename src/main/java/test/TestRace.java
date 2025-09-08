@@ -2,6 +2,7 @@ package test;
 
 import model.Cheval;
 import model.Race;
+import model.Vente;
 
 public class TestRace
 {
@@ -10,7 +11,7 @@ public class TestRace
         Race r = new Race();
         r.setId(4);
         r.setNom("Andalou");
-
+        
         // instanciation de 2 chevaux c1 et c2
         // ajout des chevaux c1 et c2 à l'arraylist des chevaux grâce
         // à la relation OneToMany
