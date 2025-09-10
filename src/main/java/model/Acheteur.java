@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 
 public class Acheteur {
+    private int id;
     private String formation;
     
     private ArrayList<Enchere> lesEncheres;
@@ -33,4 +34,14 @@ public class Acheteur {
         }
         lesEncheres.add(unEnchere);
     }    
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+    
+    
 }

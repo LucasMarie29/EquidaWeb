@@ -6,6 +6,7 @@ import java.util.ArrayList;
 public class Lot {
     private int id;
     private int prixDepart;
+    private int numSire;
     
     private Cheval cheval;
     
@@ -53,4 +54,14 @@ public class Lot {
         }
         lesEncheres.add(unEnchere);
     }
+
+    public int getNumSire() {
+        return numSire;
+    }
+
+    public void setNumSire(int numSire) {
+        this.numSire = numSire;
+    }
+    
+    
 }

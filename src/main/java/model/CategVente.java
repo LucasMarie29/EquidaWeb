@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 public class CategVente {
     
-    private int code;
+    private int id;
     private String libelle;
     
     private CategVente categVente;
@@ -15,12 +15,12 @@ public class CategVente {
     public CategVente() {
     }
 
-    public int getCode() {
-        return code;
+    public int getid() {
+        return id;
     }
 
-    public void setCode(int code) {
-        this.code = code;
+    public void setid(int id) {
+        this.id = id;
     }
 
     public String getLibelle() {

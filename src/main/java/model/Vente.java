@@ -7,6 +7,10 @@ public class Vente {
     private int id;
     private String nom;
     private String dateDebutVente;
+    private String dateFinVente;
+    private String dateDebutInscription;
+    private String dateEnvoiMessage;
+    private String objetMessage;
     
     private CategVente categVente;
     private Lieu lieu;
@@ -89,5 +93,38 @@ public class Vente {
         }
         lesCourriels.add(unCourriel);
     }
+
+    public String getDateDebutInscription() {
+        return dateDebutInscription;
+    }
+
+    public String getDateEnvoiMessage() {
+        return dateEnvoiMessage;
+    }
+
+    public String getDateFinVente() {
+        return dateFinVente;
+    }
+
+    public String getObjetMessage() {
+        return objetMessage;
+    }
+
+    public void setDateDebutInscription(String dateDebutInscription) {
+        this.dateDebutInscription = dateDebutInscription;
+    }
+
+    public void setDateEnvoiMessage(String dateEnvoiMessage) {
+        this.dateEnvoiMessage = dateEnvoiMessage;
+    }
+
+    public void setDateFinVente(String dateFinVente) {
+        this.dateFinVente = dateFinVente;
+    }
+
+    public void setObjetMessage(String objetMessage) {
+        this.objetMessage = objetMessage;
+    }
+    
     
 }
