@@ -1,5 +1,7 @@
 package model;
 
+import java.util.ArrayList;
+
 
 public class CategVente {
     
@@ -7,6 +9,8 @@ public class CategVente {
     private String libelle;
     
     private CategVente categVente;
+    
+    private ArrayList<Vente> lesVentes;
 
     public CategVente() {
     }
@@ -34,7 +38,20 @@ public class CategVente {
     public CategVente getCategVente() {
         return categVente;
     }
+
+    public ArrayList<Vente> getLesVentes() {
+        return lesVentes;
+    }
+
+    public void setLesVentes(ArrayList<Vente> lesVentes) {
+        this.lesVentes = lesVentes;
+    }
     
-    
+    public void addVente (Vente uneVente){
+        if (lesVentes ==null ){
+            lesVentes = new ArrayList<Vente>();
+        }
+        lesVentes.add(uneVente);
+    } 
    
 }

@@ -1,6 +1,7 @@
 package model;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 public class Cheval {
 
@@ -9,6 +10,8 @@ public class Cheval {
     private LocalDate dateNaissance;
 
     private Race race;
+    
+    private ArrayList<Lot> lesLots;
 
     public Cheval() {
     }
@@ -41,5 +44,20 @@ public class Cheval {
     }
     public void setRace(Race race) {
         this.race = race;
+    }
+
+    public ArrayList<Lot> getLesLots() {
+        return lesLots;
+    }
+
+    public void setLesLots(ArrayList<Lot> lesLots) {
+        this.lesLots = lesLots;
+    }
+    
+    public void addLot (Lot unLot){
+        if (lesLots ==null ){
+            lesLots = new ArrayList<Lot>();
+        }
+        lesLots.add(unLot);
     }
 }
