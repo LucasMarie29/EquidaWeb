@@ -2,8 +2,6 @@ package model;
 
 import java.util.ArrayList;
 
-
-
 public class Vente {
     
     private int id;
@@ -11,8 +9,10 @@ public class Vente {
     private String dateDebutVente;
     
     private CategVente categVente;
-    
     private Lieu lieu;
+    
+    private ArrayList<Lot> lesLots;
+    private ArrayList<Courriel> lesCourriels;
 
     public Vente() {
     }
@@ -55,5 +55,39 @@ public class Vente {
     public void setLieu(Lieu lieu) {
         this.lieu = lieu;
     }   
+
+    public String getDateDebutVente() {
+        return dateDebutVente;
+    }
+
+    public ArrayList<Lot> getLesLots() {
+        return lesLots;
+    }
+
+    public void setLesLots(ArrayList<Lot> lesLots) {
+        this.lesLots = lesLots;
+    }
+    
+    public void addLot (Lot unLot){
+        if (lesLots ==null ){
+            lesLots = new ArrayList<Lot>();
+        }
+        lesLots.add(unLot);
+    }
+
+    public ArrayList<Courriel> getLesCourriels() {
+        return lesCourriels;
+    }
+
+    public void setLesCourriels(ArrayList<Courriel> lesCourriels) {
+        this.lesCourriels = lesCourriels;
+    }
+    
+    public void addCourriel (Courriel unCourriel){
+        if (lesCourriels ==null ){
+            lesCourriels = new ArrayList<Courriel>();
+        }
+        lesCourriels.add(unCourriel);
+    }
     
 }

@@ -8,6 +8,8 @@ public class Courriel {
     private Date date;
     private String objet;
     private String corps;
+    
+    private Vente vente;
 
     public Courriel() {
     }
@@ -42,6 +44,14 @@ public class Courriel {
 
     public String getCorps() {
         return corps;
+    }
+
+    public Vente getVente() {
+        return vente;
+    }
+
+    public void setVente(Vente vente) {
+        this.vente = vente;
     }
     
     
