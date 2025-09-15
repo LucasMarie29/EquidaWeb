@@ -4,6 +4,7 @@ test\TestCategVente.class
 model\Cheval.class
 sio\equidaweb\resources\JakartaEE10Resource.class
 model\CategVente.class
+test\TestParent.class
 model\Course.class
 database\Connexionbdd.class
 model\Courriel.class
@@ -12,8 +13,10 @@ test\TestRace.class
 database\ConnexionServlet.class
 model\Pays.class
 servlet\ChevalServlet.class
+model\PieceJointe.class
 model\Lieu.class
 model\Enchere.class
+model\Vendeur.class
 database\DaoCheval.class
 test\TestClient.class
 database\DaoRace.class
@@ -22,4 +25,6 @@ model\Lot.class
 test\TestConnexionBdd.class
 test\TestVente.class
 model\Race.class
+test\TestChevalCourse.class
+model\ChevalCourse.class
 sio\equidaweb\JakartaRestConfiguration.class
