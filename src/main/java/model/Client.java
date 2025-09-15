@@ -7,6 +7,8 @@ public class Client {
     private String titre;
     private String nom;
     private String prenom;
+    private String adressePartie1;
+    private String adressePartie2;
     private String rue;
     private int copos;
     private String ville;
@@ -88,6 +90,24 @@ public class Client {
     public Pays getPays() {
         return pays;
     }
+
+    public String getAdressePartie1() {
+        return adressePartie1;
+    }
+
+    public String getAdressePartie2() {
+        return adressePartie2;
+    }
+
+    public void setAdressePartie1(String adressePartie1) {
+        this.adressePartie1 = adressePartie1;
+    }
+
+    public void setAdressePartie2(String adressePartie2) {
+        this.adressePartie2 = adressePartie2;
+    }
+    
+    
     
     
 }
