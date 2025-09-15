@@ -12,6 +12,9 @@ public class Cheval {
     private String nomPere;
     private String nomMere;
     private String vendeur;
+    private String codeSire;
+    private String taille;
+    private String poids;
     
 
     private Race race;
@@ -97,6 +100,32 @@ public class Cheval {
     public void setVendeur(String vendeur) {
         this.vendeur = vendeur;
     }
+
+    public String getCodeSire() {
+        return codeSire;
+    }
+
+    public String getPoids() {
+        return poids;
+    }
+
+    public String getTaille() {
+        return taille;
+    }
+
+    public void setCodeSire(String codeSire) {
+        this.codeSire = codeSire;
+    }
+
+    public void setPoids(String poids) {
+        this.poids = poids;
+    }
+
+    public void setTaille(String taille) {
+        this.taille = taille;
+    }
+    
+    
     
     
 }

@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class Race {
 
     private int id;
-    private String libelle;
+    private String nom;
     private String description;
     
     private Vente vente;
@@ -48,16 +48,16 @@ public class Race {
         return description;
     }
 
-    public String getLibelle() {
-        return libelle;
+    public String getNom() {
+        return nom;
     }
 
     public void setDescription(String description) {
         this.description = description;
     }
 
-    public void setLibelle(String libelle) {
-        this.libelle = libelle;
+    public void setNom(String nom) {
+        this.nom = nom;
     }
     
     
