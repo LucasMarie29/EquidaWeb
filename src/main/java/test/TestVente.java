@@ -13,7 +13,7 @@ public class TestVente {
         v.setNom("Vente num1");
         
         CategVente  cv = new CategVente();
-        cv.setCode(3);
+        cv.setId(3);
         cv.setLibelle("Hiver");
         
         v.setCategVente(cv);
@@ -29,7 +29,7 @@ public class TestVente {
         
         System.out.println("Dans la Vente : " +  v.getId());
         System.out.println("Il y a la categorie : ");
-        System.out.println(v.getCategVente().getCode() + " " + v.getCategVente().getLibelle());
+        System.out.println(v.getCategVente().getId() + " " + v.getCategVente().getLibelle());
           
         
         System.out.println(v.getLieu().getVille());

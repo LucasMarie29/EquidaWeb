@@ -9,17 +9,18 @@ public class Cheval {
     private String nom;
     private LocalDate dateNaissance;
     private String sexe;
-    private String nomPere;
-    private String nomMere;
     private String vendeur;
     private String codeSire;
     private String taille;
     private String poids;
     
-
+    private Cheval chevalPere;
+    private Cheval chevalMere;
+    
     private Race race;
     
     private ArrayList<Lot> lesLots;
+    private ArrayList<ChevalCourse> lesChevalCourses;
 
     public Cheval() {
     }
@@ -69,28 +70,12 @@ public class Cheval {
         lesLots.add(unLot);
     }
 
-    public String getNomMere() {
-        return nomMere;
-    }
-
-    public String getNomPere() {
-        return nomPere;
-    }
-
     public String getSexe() {
         return sexe;
     }
 
     public String getVendeur() {
         return vendeur;
-    }
-
-    public void setNomMere(String nomMere) {
-        this.nomMere = nomMere;
-    }
-
-    public void setNomPere(String nomPere) {
-        this.nomPere = nomPere;
     }
 
     public void setSexe(String sexe) {
@@ -124,8 +109,37 @@ public class Cheval {
     public void setTaille(String taille) {
         this.taille = taille;
     }
+
+    public Cheval getChevalMere() {
+        return chevalMere;
+    }
+
+    public void setChevalMere(Cheval chevalMere) {
+        this.chevalMere = chevalMere;
+    }
+
+    public Cheval getChevalPere() {
+        return chevalPere;
+    }
+
+    public void setChevalPere(Cheval chevalPere) {
+        this.chevalPere = chevalPere;
+    }
+
+    public ArrayList<ChevalCourse> getLesChevalCourses() {
+        return lesChevalCourses;
+    }
+
+    public void setLesChevalCourses(ArrayList<ChevalCourse> lesChevalCourses) {
+        this.lesChevalCourses = lesChevalCourses;
+    }
     
-    
+    public void addChevalCourse (ChevalCourse unChevalCourse){
+        if (lesChevalCourses ==null ){
+            lesChevalCourses = new ArrayList<ChevalCourse>();
+        }
+        lesChevalCourses.add(unChevalCourse);
+    }
     
     
 }

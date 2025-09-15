@@ -8,6 +8,8 @@ public class Course {
     private String nom;
     private String lieu;
     private Date date;
+    
+    private ChevalCourse chevalCourse;
 
     public Course() {
     }
@@ -43,6 +45,15 @@ public class Course {
     public void setDate(Date date) {
         this.date = date;
     }
+
+    public ChevalCourse getChevalCourse() {
+        return chevalCourse;
+    }
+
+    public void setChevalCourse(ChevalCourse chevalCourse) {
+        this.chevalCourse = chevalCourse;
+    }
+    
     
     
 }
