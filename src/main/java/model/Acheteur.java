@@ -3,13 +3,18 @@ package model;
 import java.util.ArrayList;
 
 
-public class Acheteur {
+public class Acheteur extends Client{
     private int id;
     private String formation;
     
     private ArrayList<Enchere> lesEncheres;
 
     public Acheteur() {
+        super();
+    }
+    
+    public Acheteur(String titre, String nom, String prenom, String adressePartie1, String adressePartie2, String rue, int copos, String ville, String adresseMessagerie) {
+        super();
     }
 
     public String getFormation() {

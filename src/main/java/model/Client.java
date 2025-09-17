@@ -17,7 +17,14 @@ public class Client {
     private Pays pays;
 
     public Client() {
+        super();
     }
+
+    public Client(String titre, String nom, String prenom, String adressePartie1, String adressePartie2, String rue, int copos, String ville, String adresseMessagerie) {
+        super();
+    }
+    
+    
 
     public void setId(int id) {
         this.id = id;
