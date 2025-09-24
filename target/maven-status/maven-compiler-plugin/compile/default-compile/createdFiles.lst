@@ -3,6 +3,7 @@ model\Client.class
 test\TestCategVente.class
 model\Cheval.class
 sio\equidaweb\resources\JakartaEE10Resource.class
+test\TestAcheteur.class
 model\CategVente.class
 test\TestParent.class
 model\Course.class
@@ -16,7 +17,9 @@ servlet\ChevalServlet.class
 model\PieceJointe.class
 model\Lieu.class
 model\Enchere.class
+database\DaoVente.class
 model\Vendeur.class
+test\TestVendeur.class
 database\DaoCheval.class
 test\TestClient.class
 database\DaoRace.class
