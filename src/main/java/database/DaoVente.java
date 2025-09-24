@@ -96,12 +96,14 @@ public class DaoVente {
         
         requeteSql.setString(7, vente.getCorpsMessage());
         
+        requeteSql.setInt(8, vente.getLieu().getId());
+ /*       
         if (vente.getLieu() != null && vente.getLieu().getId() != -1) {
             requeteSql.setInt(8, vente.getLieu().getId());
         } else {
             requeteSql.setNull(8, java.sql.Types.INTEGER);
         }
-
+*/
         if (vente.getCategVente() != null && vente.getCategVente().getId() != -1) {
             requeteSql.setInt(9, vente.getCategVente().getId());
         } else {

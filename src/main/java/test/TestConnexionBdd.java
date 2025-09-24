@@ -22,9 +22,15 @@ public class TestConnexionBdd {
         
         
         Vente vente = new Vente();
-        vente.setNom("test3");
+        vente.setNom("test4");
         vente.setDateDebutVente("2025-10-12");
         
+        
+        Lieu lieu = new Lieu();
+        lieu.setId(4);
+        
+        
+        vente.setLieu(lieu);
         
         
         DaoVente.ajouterVente(cnx, vente);
