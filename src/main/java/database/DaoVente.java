@@ -47,8 +47,8 @@ public class DaoVente {
         Vente vente = null;
         try {
             requeteSql = cnx.prepareStatement(
-                "SELECT v.id as v_id, v.nom as v_nom, " +
-                "l.id as l_id, l.ville as l_ville " +
+                "SELECT v.id as v_id, v.nom as v_nom, dateDebutVente, dateFinVente, dateDebutInscription, dateEnvoiMessage, objetMessage, corpsMessage " +
+                ", l.id as l_id, l.ville as l_ville " +
                 "FROM vente v " +
                 "INNER JOIN lieu l ON v.lieu_id = l.id " +
                 "WHERE v.id = ? "
@@ -59,6 +59,13 @@ public class DaoVente {
                 vente = new Vente();
                 vente.setId(resultatRequete.getInt("v_id"));
                 vente.setNom(resultatRequete.getString("v_nom"));
+                vente.setDateDebutVente(resultatRequete.getDate("dateDebutVente"));
+                vente.setDateFinVente(resultatRequete.getDate("dateFinVente"));
+                vente.setDateDebutInscription(resultatRequete.getDate("dateDebutInscription"));
+                vente.setDateEnvoiMessage(resultatRequete.getDate("dateEnvoiMessage"));
+                vente.setObjetMessage(resultatRequete.getString("objetMessage"));
+                vente.setCorpsMessage(resultatRequete.getString("corpsMessage"));
+                
                 Lieu lieu = new Lieu();
                 lieu.setId(resultatRequete.getInt("l_id"));
                 lieu.setVille(resultatRequete.getString("l_ville"));
@@ -79,18 +86,30 @@ public class DaoVente {
         );
         requeteSql.setString(1, vente.getNom());
         
-        // Gestion de la date de naissance
+
         if (vente.getDateDebutVente() != null) {
-            requeteSql.setDate(2, java.sql.Date.valueOf(vente.getDateDebutVente()));
+            requeteSql.setDate(2, new java.sql.Date(vente.getDateDebutVente().getTime()));
         } else {
             requeteSql.setNull(2, java.sql.Types.DATE);
         }
+
+        if (vente.getDateFinVente() != null) {
+            requeteSql.setDate(3, new java.sql.Date(vente.getDateFinVente().getTime()));
+        } else {
+            requeteSql.setNull(3, java.sql.Types.DATE);
+        }
+
+        if (vente.getDateDebutInscription() != null) {
+            requeteSql.setDate(4, new java.sql.Date(vente.getDateDebutInscription().getTime()));
+        } else {
+            requeteSql.setNull(4, java.sql.Types.DATE);
+        }     
         
-        requeteSql.setString(3, vente.getDateFinVente());
-        
-        requeteSql.setString(4, vente.getDateDebutInscription());
-        
-        requeteSql.setString(5, vente.getDateEnvoiMessage());
+        if (vente.getDateEnvoiMessage() != null) {
+            requeteSql.setDate(5, new java.sql.Date(vente.getDateEnvoiMessage().getTime()));
+        } else {
+            requeteSql.setNull(5, java.sql.Types.DATE);
+        } 
         
         requeteSql.setString(6, vente.getObjetMessage());
         

@@ -5,6 +5,7 @@ E:\SIO2\NetBeansProjects\equidaweb25Netbeans\src\main\java\model\Lieu.java
 E:\SIO2\NetBeansProjects\equidaweb25Netbeans\src\main\java\model\Lot.java
 E:\SIO2\NetBeansProjects\equidaweb25Netbeans\src\main\java\database\Connexionbdd.java
 E:\SIO2\NetBeansProjects\equidaweb25Netbeans\src\main\java\test\TestChevalCourse.java
+E:\SIO2\NetBeansProjects\equidaweb25Netbeans\src\main\java\test\TestAcheteur.java
 E:\SIO2\NetBeansProjects\equidaweb25Netbeans\src\main\java\model\Pays.java
 E:\SIO2\NetBeansProjects\equidaweb25Netbeans\src\main\java\model\Courriel.java
 E:\SIO2\NetBeansProjects\equidaweb25Netbeans\src\main\java\model\ChevalCourse.java
@@ -16,7 +17,10 @@ E:\SIO2\NetBeansProjects\equidaweb25Netbeans\src\main\java\model\Client.java
 E:\SIO2\NetBeansProjects\equidaweb25Netbeans\src\main\java\database\ConnexionServlet.java
 E:\SIO2\NetBeansProjects\equidaweb25Netbeans\src\main\java\servlet\ChevalServlet.java
 E:\SIO2\NetBeansProjects\equidaweb25Netbeans\src\main\java\test\TestCategVente.java
+E:\SIO2\NetBeansProjects\equidaweb25Netbeans\src\main\java\test\TestVendeur.java
 E:\SIO2\NetBeansProjects\equidaweb25Netbeans\src\main\java\model\Race.java
+E:\SIO2\NetBeansProjects\equidaweb25Netbeans\src\main\java\servlet\VenteServlet.java
+E:\SIO2\NetBeansProjects\equidaweb25Netbeans\src\main\java\database\DaoVente.java
 E:\SIO2\NetBeansProjects\equidaweb25Netbeans\src\main\java\sio\equidaweb\JakartaRestConfiguration.java
 E:\SIO2\NetBeansProjects\equidaweb25Netbeans\src\main\java\test\TestConnexionBdd.java
 E:\SIO2\NetBeansProjects\equidaweb25Netbeans\src\main\java\test\TestRace.java
