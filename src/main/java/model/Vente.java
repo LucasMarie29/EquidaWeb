@@ -11,6 +11,7 @@ public class Vente {
     private String dateDebutInscription;
     private String dateEnvoiMessage;
     private String objetMessage;
+    private String corpsMessage;
     
     private CategVente categVente;
     private Lieu lieu;
@@ -125,6 +126,15 @@ public class Vente {
     public void setObjetMessage(String objetMessage) {
         this.objetMessage = objetMessage;
     }
+
+    public String getCorpsMessage() {
+        return corpsMessage;
+    }
+
+    public void setCorpsMessage(String corpsMessage) {
+        this.corpsMessage = corpsMessage;
+    }
+    
     
     
 }
