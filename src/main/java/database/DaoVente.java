@@ -1,12 +1,16 @@
 package database;
 
+import static database.DaoCheval.requeteSql;
+import static database.DaoCheval.resultatRequete;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import model.Cheval;
 import model.Vente;
 import model.Lieu;
+import model.Lot;
 
 
 
@@ -42,7 +46,7 @@ public class DaoVente {
         }
         return lesVentes;
     }
-
+    
     public static Vente getLaVente(Connection cnx, int idVente) {
         Vente vente = null;
         try {
@@ -76,6 +80,39 @@ public class DaoVente {
             System.out.println("La requête de getLaVente a généré une exception SQL");
         }
         return vente;
+    }
+    public static ArrayList<Lot> getLesLots(Connection cnx, int idVente) {
+        
+        ArrayList<Lot> lesLots = new ArrayList<Lot>();
+        try {
+            requeteSql = cnx.prepareStatement(
+                "SELECT l.id as l_id, prixDepart, c.id as c_id, c.nom as c_nom, v.id as v_id " +
+                "FROM lot l " +
+                "INNER JOIN cheval c ON l.cheval_id = c.id " +
+                "INNER JOIN vente v ON l.vente_id = v.id " +
+                "WHERE v.id = ? "
+                
+            );
+            requeteSql.setInt(1, idVente);
+            resultatRequete = requeteSql.executeQuery();
+            if (resultatRequete.next()) {
+                Lot lot = new Lot();
+                lot.setId(resultatRequete.getInt("l_id"));
+                lot.setPrixDepart(resultatRequete.getInt("prixDepart"));
+                Cheval cheval = new Cheval();
+                cheval.setId(resultatRequete.getInt("c_id"));
+                cheval.setNom(resultatRequete.getString("c_nom"));
+                
+                lot.setCheval(cheval);
+                
+                lesLots.add(lot);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            System.out.println("La requête de getLeLot a généré une exception SQL");
+        }
+        return lesLots;
+        
     }
 
     public static boolean ajouterVente(Connection cnx, Vente vente) {

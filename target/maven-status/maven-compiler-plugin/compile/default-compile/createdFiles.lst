@@ -29,6 +29,7 @@ model\Lot.class
 test\TestConnexionBdd.class
 test\TestVente.class
 model\Race.class
+test\TestChevalVente.class
 test\TestChevalCourse.class
 model\ChevalCourse.class
 sio\equidaweb\JakartaRestConfiguration.class

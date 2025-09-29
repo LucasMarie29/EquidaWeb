@@ -1,5 +1,6 @@
 package database;
 
+
 import model.Cheval;
 import model.Race;
 
@@ -8,17 +9,13 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import model.Lot;
 
 public class DaoCheval {
     Connection cnx;
     static PreparedStatement requeteSql = null;
     static ResultSet resultatRequete = null;
 
-    /**
-     * Récupère tous les chevaux présents dans la base de données avec leurs races associées
-     * @param cnx La connexion active à la base de données
-     * @return ArrayList<Cheval> La liste de tous les chevaux trouvés
-     */
     public static ArrayList<Cheval> getLesChevaux(Connection cnx) {
         ArrayList<Cheval> lesChevaux = new ArrayList<Cheval>();
         try {
@@ -45,13 +42,9 @@ public class DaoCheval {
         }
         return lesChevaux;
     }
+    
+    
 
-    /**
-     * Récupère un cheval spécifique par son identifiant
-     * @param cnx La connexion active à la base de données
-     * @param id L'identifiant du cheval recherché
-     * @return Cheval Le cheval trouvé ou null si non trouvé
-     */
     public static Cheval getLeCheval(Connection cnx, int idCheval) {
         Cheval cheval = null;
         try {

@@ -68,6 +68,7 @@ public class Cheval {
             lesLots = new ArrayList<Lot>();
         }
         lesLots.add(unLot);
+        unLot.setCheval(this);
     }
 
     public String getSexe() {
