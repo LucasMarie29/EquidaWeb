@@ -79,6 +79,7 @@ public class Vente {
             lesLots = new ArrayList<Lot>();
         }
         lesLots.add(unLot);
+        unLot.setVente(this);
     }
 
     public ArrayList<Courriel> getLesCourriels() {

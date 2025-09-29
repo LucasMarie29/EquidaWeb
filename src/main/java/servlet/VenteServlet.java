@@ -18,7 +18,9 @@ import java.sql.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import model.Cheval;
 import model.Lieu;
+import model.Lot;
 import model.Vente;
 
 @WebServlet(name = "venteServlet", value = "/vente-servlet/*")
@@ -50,9 +52,11 @@ public class VenteServlet extends HttpServlet {
             try {
                 int idVente = Integer.parseInt(request.getParameter("idVente"));
                 Vente laVente = DaoVente.getLaVente(cnx, idVente);
+                ArrayList<Lot> lesLots = DaoVente.getLesLots(cnx, idVente);
 
                 if (laVente != null) {
                     request.setAttribute("pLaVente", laVente);
+                    request.setAttribute("pLesLots", lesLots);
                     this.getServletContext().getRequestDispatcher("/WEB-INF/views/vente/show.jsp").forward(request, response);
                 } else {
                     response.sendRedirect(request.getContextPath() + "/vente-servlet/lister");
@@ -69,6 +73,7 @@ public class VenteServlet extends HttpServlet {
             request.setAttribute("pLesVentes", lesVentes);
             this.getServletContext().getRequestDispatcher("/WEB-INF/views/vente/add.jsp").forward(request, response);
         }
+        
 
 
     }
