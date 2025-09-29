@@ -56,7 +56,7 @@ public class VenteServlet extends HttpServlet {
 
                 if (laVente != null) {
                     request.setAttribute("pLaVente", laVente);
-                    request.setAttribute("pLaVenteLot", lesLots);
+                    request.setAttribute("pLesLots", lesLots);
                     this.getServletContext().getRequestDispatcher("/WEB-INF/views/vente/show.jsp").forward(request, response);
                 } else {
                     response.sendRedirect(request.getContextPath() + "/vente-servlet/lister");

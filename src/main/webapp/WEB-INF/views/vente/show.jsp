@@ -113,7 +113,7 @@
                     </div>                                            
                                 <h2>Liste des lots</h2>
                                     <% 
-                                        ArrayList<Lot> lesLots = (ArrayList<Lot>) request.getAttribute("pLaVenteLot");
+                                        ArrayList<Lot> lesLots = (ArrayList<Lot>) request.getAttribute("pLesLots");
                                         if (lesLots != null && !lesLots.isEmpty()) {
                                     %>
                                         <table class="table table-bordered table-striped">
