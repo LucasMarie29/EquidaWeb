@@ -9,6 +9,7 @@ test\TestParent.class
 model\Course.class
 database\Connexionbdd.class
 model\Courriel.class
+servlet\VenteServlet.class
 model\Vente.class
 test\TestRace.class
 database\ConnexionServlet.class

@@ -14,11 +14,14 @@ import jakarta.servlet.ServletContext;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
+import java.sql.Date;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import model.Lieu;
 import model.Vente;
 
-@WebServlet(name = "chevalServlet", value = "/cheval-servlet/*")
+@WebServlet(name = "venteServlet", value = "/vente-servlet/*")
 public class VenteServlet extends HttpServlet {
 
     Connection cnx;
@@ -60,62 +63,63 @@ public class VenteServlet extends HttpServlet {
             }
 
         }
-/*
+
         if ("/add".equals(path)) {
-            ArrayList<Lieu> lesLieux = DaoLieu.getLesLieux(cnx);
-            request.setAttribute("pLesLieux", lesLieux);
-            this.getServletContext().getRequestDispatcher("/WEB-INF/views/lieu/add.jsp").forward(request, response);
+            ArrayList<Vente> lesVentes = DaoVente.getLesVentes(cnx);
+            request.setAttribute("pLesVentes", lesVentes);
+            this.getServletContext().getRequestDispatcher("/WEB-INF/views/vente/add.jsp").forward(request, response);
         }
-*/
+
 
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String path = request.getPathInfo();
-/*
+
         if ("/add".equals(path)) {
             try {
                 // Récupération des données du formulaire
                 String nom = request.getParameter("nom");
-                String dateDebutVenteStr = request.getParameter("dateDebutVente");
-                int raceId = Integer.parseInt(request.getParameter("race"));
+                String dateDebutVentestr = request.getParameter("dateDebutVente");
 
                 // Création d'un nouveau cheval
                 Vente nouvelVente = new Vente();
                 nouvelVente.setNom(nom);
 
-                // Gestion de la date de naissance
-                if (dateDebutVenteStr != null && !dateDebutVenteStr.isEmpty()) {
-                    nouvelVente.setDateDebutVente(dateDebutVenteStr);
-                }
+                
+                if (dateDebutVentestr != null && !dateDebutVentestr.isEmpty()) {
+                    try {
+                        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+                        Date dateDebutVente = (Date) sdf.parse(dateDebutVentestr);
+                        nouvelVente.setDateDebutVente(dateDebutVente);
+                    } catch (ParseException e) {
+                        e.printStackTrace();
+                        
+                    }
+}
 
-                // Récupération et attribution de la race
-                Lieu lieu = DaoLieu.getRaceById(cnx, raceId);
-                if (race != null) {
-                    nouvelVente.setRace(race);
-                } else {
-                    throw new Exception("La race sélectionnée n'existe pas");
-                }
 
                 // Tentative d'ajout en base de données
-                if (DaoCheval.ajouterCheval(cnx, nouvelVente)) {
-                    // Redirection vers la page de consultation du cheval nouvellement créé
-                    response.sendRedirect(request.getContextPath() + "/cheval-servlet/show?idCheval=" + nouveauCheval.getId());
+                if (DaoVente.ajouterVente(cnx, nouvelVente)) {
+                    
+                    response.sendRedirect(request.getContextPath() + "/vente-servlet/show?idVente=" + nouvelVente.getId());
                 } else {
-                    throw new Exception("Erreur lors de l'enregistrement du cheval");
+                    throw new Exception("Erreur lors de l'enregistrement de la vente");
                 }
 
             } catch (NumberFormatException e) {
-                request.setAttribute("message", "Erreur : la race sélectionnée n'est pas valide");
-                request.setAttribute("pLesRaces", DaoRace.getLesRaces(cnx));
-                this.getServletContext().getRequestDispatcher("/WEB-INF/views/cheval/add.jsp").forward(request, response);
+                request.setAttribute("message", "Erreur lors de l'enregistrement. Veuillez vérifier les champs.");
+                this.getServletContext().getRequestDispatcher("/WEB-INF/views/vente/add.jsp").forward(request, response);
+
+                this.getServletContext().getRequestDispatcher("/WEB-INF/views/vente/add.jsp").forward(request, response);
             } catch (Exception e) {
-                request.setAttribute("message", "Erreur : " + e.getMessage());
-                request.setAttribute("pLesRaces", DaoRace.getLesRaces(cnx));
-                this.getServletContext().getRequestDispatcher("/WEB-INF/views/cheval/add.jsp").forward(request, response);
+                request.setAttribute("message", "Erreur lors de l'enregistrement. Veuillez vérifier les champs.");
+                this.getServletContext().getRequestDispatcher("/WEB-INF/views/vente/add.jsp").forward(request, response);
+
+                this.getServletContext().getRequestDispatcher("/WEB-INF/views/vente/add.jsp").forward(request, response);
             }
-        }*/
+        }
     }
 
     public void destroy() {

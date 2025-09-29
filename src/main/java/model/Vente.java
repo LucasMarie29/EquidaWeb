@@ -1,15 +1,16 @@
 package model;
 
+import java.sql.Date;
 import java.util.ArrayList;
 
 public class Vente {
     
     private int id;
     private String nom;
-    private String dateDebutVente;
-    private String dateFinVente;
-    private String dateDebutInscription;
-    private String dateEnvoiMessage;
+    private Date dateDebutVente;
+    private Date dateFinVente;
+    private Date dateDebutInscription;
+    private Date dateEnvoiMessage;
     private String objetMessage;
     private String corpsMessage;
     
@@ -38,11 +39,11 @@ public class Vente {
         this.nom = nom;
     }
 
-    public String getDateDebutVente(String string) {
+    public Date getDateDebutVente(Date date) {
         return dateDebutVente;
     }
 
-    public void setDateDebutVente(String dateDebutVente) {
+    public void setDateDebutVente(Date dateDebutVente) {
         this.dateDebutVente = dateDebutVente;
     }
 
@@ -61,7 +62,7 @@ public class Vente {
         this.lieu = lieu;
     }   
 
-    public String getDateDebutVente() {
+    public Date getDateDebutVente() {
         return dateDebutVente;
     }
 
@@ -95,15 +96,15 @@ public class Vente {
         lesCourriels.add(unCourriel);
     }
 
-    public String getDateDebutInscription() {
+    public Date getDateDebutInscription() {
         return dateDebutInscription;
     }
 
-    public String getDateEnvoiMessage() {
+    public Date getDateEnvoiMessage() {
         return dateEnvoiMessage;
     }
 
-    public String getDateFinVente() {
+    public Date getDateFinVente() {
         return dateFinVente;
     }
 
@@ -111,15 +112,15 @@ public class Vente {
         return objetMessage;
     }
 
-    public void setDateDebutInscription(String dateDebutInscription) {
+    public void setDateDebutInscription(Date dateDebutInscription) {
         this.dateDebutInscription = dateDebutInscription;
     }
 
-    public void setDateEnvoiMessage(String dateEnvoiMessage) {
+    public void setDateEnvoiMessage(Date dateEnvoiMessage) {
         this.dateEnvoiMessage = dateEnvoiMessage;
     }
 
-    public void setDateFinVente(String dateFinVente) {
+    public void setDateFinVente(Date dateFinVente) {
         this.dateFinVente = dateFinVente;
     }
 
