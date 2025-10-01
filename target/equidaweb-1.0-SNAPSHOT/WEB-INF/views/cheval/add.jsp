@@ -1,3 +1,6 @@
+<%@page import="java.util.List"%>
+<%@page import="model.Vendeur"%>
+<%@page import="model.Cheval"%>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ page import="model.Race" %>
 <%@ page import="java.util.ArrayList" %>
@@ -53,7 +56,73 @@
                                     <input type="text" name="nom" id="nom" class="form-control" required>
                                 </div>
                             </div>
+                            
+                            <!-- Père -->
+                            <div class="form-group">
+                                <label for="pere" class="col-sm-3 control-label">Père</label>
+                                <div class="col-sm-9">
+                                    <select name="pere" id="pere" class="form-control">
+                                        <option value="">-- Aucun père --</option>
+                                        <% 
+                                            ArrayList<Cheval> lesPeres = (ArrayList<Cheval>) request.getAttribute("pLesChevaux");
+                                            if (lesPeres != null) {
+                                                for (Cheval pere : lesPeres) { %>
+                                                    <option value="<%= pere.getId() %>"><%= pere.getNom() %></option>
+                                        <%      }
+                                            }
+                                        %>
+                                    </select>
+                                </div>
+                            </div>
 
+                            <!-- Mère -->
+                            <div class="form-group">
+                                <label for="mere" class="col-sm-3 control-label">Mère</label>
+                                <div class="col-sm-9">
+                                    <select name="mere" id="mere" class="form-control">
+                                        <option value="">-- Aucune mère --</option>
+                                        <% 
+                                            ArrayList<Cheval> lesMeres = (ArrayList<Cheval>) request.getAttribute("pLesChevaux");
+                                            if (lesMeres != null) {
+                                                for (Cheval mere : lesMeres) { %>
+                                                    <option value="<%= mere.getId() %>"><%= mere.getNom() %></option>
+                                        <%      }
+                                            }
+                                        %>
+                                    </select>
+                                </div>
+                            </div>
+
+                            
+                            <div class="form-group">
+                                <label for="sexe" class="col-sm-3 control-label">Sexe</label>
+                                <div class="col-sm-9">
+                                    <input type="text" name="sexe" id="sexe" class="form-control" required>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="codeSire" class="col-sm-3 control-label">Code sire</label>
+                                <div class="col-sm-9">
+                                    <input type="text" name="codeSire" id="codeSire" class="form-control" required>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="taille" class="col-sm-3 control-label">Taille</label>
+                                <div class="col-sm-9">
+                                    <input type="text" name="taille" id="taille" class="form-control" required>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="poids" class="col-sm-3 control-label">Poids</label>
+                                <div class="col-sm-9">
+                                    <input type="text" name="poids" id="poids" class="form-control" required>
+                                </div>
+                            </div>
+                            
+                            
                             <!-- Date de naissance -->
                             <div class="form-group">
                                 <label for="dateNaissance" class="col-sm-3 control-label">Date de naissance</label>
@@ -78,6 +147,25 @@
                                     </select>
                                 </div>
                             </div>
+                                    
+                            <!-- Vendeur -->
+                            <div class="form-group">
+                               <label for="vendeur" class="col-sm-3 control-label">Vendeur</label>
+                               <div class="col-sm-9">
+                                   <select name="vendeur" id="vendeur" class="form-control" required>
+                                       <option value="">-- Sélectionnez un vendeur --</option>
+                                       <% 
+                                           List<Vendeur> lesVendeurs = (List<Vendeur>) request.getAttribute("pLesVendeurs");
+                                           if (lesVendeurs != null) {
+                                               for (Vendeur vendeur : lesVendeurs) { %>
+                                                   <option value="<%= vendeur.getId() %>"><%= vendeur.getNom() %></option>
+                                       <%      }
+                                           }
+                                       %>
+                                   </select>
+                               </div>
+                            </div>
+
 
                             <!-- Boutons -->
                             <div class="form-group">
