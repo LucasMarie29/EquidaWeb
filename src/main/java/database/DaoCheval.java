@@ -142,24 +142,40 @@ public class DaoCheval {
     public static boolean ajouterCheval(Connection cnx, Cheval cheval) {
     try {
         requeteSql = cnx.prepareStatement(
-            "INSERT INTO cheval (nom, date_naissance, race_id) VALUES (?, ?, ?)",
+            "INSERT INTO cheval (nom, sexe, codeSire, taille, poids, vendeur, date_naissance, race_id, pere_id, mere_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
             PreparedStatement.RETURN_GENERATED_KEYS
         );
         requeteSql.setString(1, cheval.getNom());
         
-        // Gestion de la date de naissance
+        requeteSql.setString(2, cheval.getSexe());
+        
+        requeteSql.setString(3, cheval.getCodeSire());
+        
+        requeteSql.setString(4, cheval.getTaille());
+        
+        requeteSql.setString(5, cheval.getPoids());
+        
+        requeteSql.setInt(6, cheval.getVendeur());
+        
         if (cheval.getDateNaissance() != null) {
-            requeteSql.setDate(2, java.sql.Date.valueOf(cheval.getDateNaissance()));
+            requeteSql.setDate(7, java.sql.Date.valueOf(cheval.getDateNaissance()));
         } else {
-            requeteSql.setNull(2, java.sql.Types.DATE);
+            requeteSql.setNull(7, java.sql.Types.DATE);
         }
         
-        requeteSql.setInt(3, cheval.getRace().getId());
+        requeteSql.setInt(8, cheval.getRace().getId());
+        
+        requeteSql.setInt(9, cheval.getChevalPere().getId());
+        
+        requeteSql.setInt(10, cheval.getChevalMere().getId());
+        
+        
+        
         
         int result = requeteSql.executeUpdate();
         
         if (result == 1) {
-            // Récupération de l'id auto-généré
+            
             ResultSet rs = requeteSql.getGeneratedKeys();
             if (rs.next()) {
                 cheval.setId(rs.getInt(1));

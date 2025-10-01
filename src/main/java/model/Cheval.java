@@ -9,7 +9,7 @@ public class Cheval {
     private String nom;
     private LocalDate dateNaissance;
     private String sexe;
-    private String vendeur;
+    private int vendeur;
     private String codeSire;
     private String taille;
     private String poids;
@@ -75,7 +75,7 @@ public class Cheval {
         return sexe;
     }
 
-    public String getVendeur() {
+    public int getVendeur() {
         return vendeur;
     }
 
@@ -83,7 +83,7 @@ public class Cheval {
         this.sexe = sexe;
     }
 
-    public void setVendeur(String vendeur) {
+    public void setVendeur(int vendeur) {
         this.vendeur = vendeur;
     }
 

@@ -67,7 +67,10 @@ public class ChevalServlet extends HttpServlet {
 
         if ("/add".equals(path)) {
             ArrayList<Race> lesRaces = DaoRace.getLesRaces(cnx);
+            ArrayList<Cheval> lesChevaux = DaoCheval.getLesChevaux(cnx);
             request.setAttribute("pLesRaces", lesRaces);
+            request.setAttribute("pLesChevaux", lesChevaux);
+            System.out.println("Nombre de chevaux récupérés : " + lesChevaux.size());
             this.getServletContext().getRequestDispatcher("/WEB-INF/views/cheval/add.jsp").forward(request, response);
         }
 
@@ -84,19 +87,52 @@ public class ChevalServlet extends HttpServlet {
                 String nom = request.getParameter("nom");
                 String dateNaissanceStr = request.getParameter("dateNaissance");
                 int raceId = Integer.parseInt(request.getParameter("race"));
+                String sexe = request.getParameter("sexe");
+                String codeSire = request.getParameter("codeSire");
+                String taille = request.getParameter("taille");
+                String poids = request.getParameter("poids");
+                int vendeurId = Integer.parseInt(request.getParameter("vendeur"));
+                
+                        
 
                 // Création d'un nouveau cheval
                 Cheval nouveauCheval = new Cheval();
                 nouveauCheval.setNom(nom);
+                nouveauCheval.setSexe(sexe);
+                nouveauCheval.setCodeSire(codeSire);
+                nouveauCheval.setTaille(taille);
+                nouveauCheval.setPoids(poids);
+                nouveauCheval.setVendeur(vendeurId);
+                
+                
+                Cheval pere = null;
+                String pereIdStr = request.getParameter("pere_id");
+                if (pereIdStr != null && !pereIdStr.trim().isEmpty()) {
+                    pere = new Cheval();
+                    pere.setId(Integer.parseInt(pereIdStr));
+                }
+                
+                Cheval mere = null;
+                String mereIdStr = request.getParameter("mere_id");
+                if (mereIdStr != null && !mereIdStr.trim().isEmpty()) {
+                    mere = new Cheval();
+                    mere.setId(Integer.parseInt(mereIdStr));
+                }
 
-                // Gestion de la date de naissance
+                nouveauCheval.setChevalPere(pere);
+                nouveauCheval.setChevalMere(mere);
+
+                
+
                 if (dateNaissanceStr != null && !dateNaissanceStr.isEmpty()) {
                     LocalDate dateNaissance = LocalDate.parse(dateNaissanceStr);
                     nouveauCheval.setDateNaissance(dateNaissance);
                 }
 
-                // Récupération et attribution de la race
+
                 Race race = DaoRace.getRaceById(cnx, raceId);
+                
+                
                 if (race != null) {
                     nouveauCheval.setRace(race);
                 } else {
