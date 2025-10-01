@@ -3,7 +3,7 @@ package model;
 
 public class Vendeur extends Client {
     private int id;
-    private String ca;
+    private String nom;
 
     public Vendeur() {
         super();
@@ -17,16 +17,16 @@ public class Vendeur extends Client {
         return id;
     }
 
-    public String getCa() {
-        return ca;
+    public String getNom() {
+        return nom;
     }
 
     public void setId(int id) {
         this.id = id;
     }
 
-    public void setCa(String ca) {
-        this.ca = ca;
+    public void setNom(String nom) {
+        this.nom = nom;
     }
     
     
