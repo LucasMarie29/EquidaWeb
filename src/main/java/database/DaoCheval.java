@@ -46,14 +46,15 @@ public class DaoCheval {
     
 
     public static Cheval getLeCheval(Connection cnx, int idCheval) {
-        Cheval cheval = null;
+        Cheval cheval = new Cheval();
         try {
             requeteSql = cnx.prepareStatement(
-                "SELECT c.id as c_id, c.nom as c_nom, pere_id, mere_id, " +
-                "r.id as r_id, r.nom as r_nom " +
+                "SELECT c.id as c_id, c.nom as c_nom, cpere.id as cpere_id, cpere.nom as cpere_nom, cmere.id as cmere_id, cmere.nom as cmere_nom, r.nom as r_nom, c.date_naissance as date_Naissance_nom " +
                 "FROM cheval c " +
                 "INNER JOIN race r ON c.race_id = r.id " +
-                "WHERE c.id = ?"
+                "INNER JOIN cheval cpere ON c.pere_id = cpere.id " +
+                "INNER JOIN cheval cmere ON c.mere_id = cmere.id " +
+                "WHERE c.id = ? "
             );
             requeteSql.setInt(1, idCheval);
             resultatRequete = requeteSql.executeQuery();
@@ -63,15 +64,22 @@ public class DaoCheval {
                 cheval.setId(resultatRequete.getInt("c_id"));
                 cheval.setNom(resultatRequete.getString("c_nom"));
                 
-                Cheval pere = null;
+                java.sql.Date sqlDate = resultatRequete.getDate("date_Naissance_nom");
+                if (sqlDate != null) {
+                    cheval.setDateNaissance(sqlDate.toLocalDate());
+                }
+                
+                Cheval pere = new Cheval();
+                pere.setId(resultatRequete.getInt("cpere_id"));
+                pere.setNom(resultatRequete.getString("cpere_nom"));
                 cheval.setChevalPere(pere);
                 
-                Cheval mere = null;
+                Cheval mere = new Cheval();
+                mere.setId(resultatRequete.getInt("cmere_id"));
+                mere.setNom(resultatRequete.getString("cmere_nom"));
                 cheval.setChevalMere(mere);
                 
-                
                 Race race = new Race();
-                race.setId(resultatRequete.getInt("r_id"));
                 race.setNom(resultatRequete.getString("r_nom"));
                 
                 cheval.setRace(race);
