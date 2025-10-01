@@ -1,3 +1,5 @@
+<%@page import="model.ChevalCourse"%>
+<%@page import="java.util.ArrayList"%>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ page import="model.Cheval" %>
 
@@ -93,9 +95,33 @@
                                 <div class="col-sm-9 detail-value">
                                     <%= leCheval.getChevalMere().getNom() != null ? leCheval.getChevalMere().getNom() : "Non renseignée" %>
                                 </div>
-                            </div>   
-                             
-
+                            </div>  
+                                
+                            <% 
+                              ArrayList<ChevalCourse> lesChevauxCourses = (ArrayList<ChevalCourse>) request.getAttribute("pLesCoursesChevaux");
+                                if (lesChevauxCourses != null && !lesChevauxCourses.isEmpty()) {
+                            %>    
+                            <table class="table table-bordered table-striped">
+                                            <thead>
+                                                <tr>
+                                                    <th>Nom de la course</th>
+                                                    <th>Position</th>
+                                                    <th>Temps</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <% for (ChevalCourse chevalCourse : lesChevauxCourses) { %>
+                                                    <tr>
+                                                        <td><%= chevalCourse.getCourse().getNom() %></td>
+                                                        <td><%= chevalCourse.getPosition() %></td>
+                                                        <td><%= chevalCourse.getTemps() %></td>
+                                                    </tr>
+                                                <% } %>
+                                            </tbody>
+                            </table>
+                            <% 
+                                } 
+                            %>    
                             <div class="row" style="margin-top: 30px;">
                                 <div class="col-sm-offset-3 col-sm-9">
                                     <a href="<%= request.getContextPath() %>/cheval-servlet/list" class="btn btn-default">

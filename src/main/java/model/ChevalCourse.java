@@ -4,6 +4,8 @@
  */
 package model;
 
+import java.sql.Time;
+
 /**
  *
  * @author sio2
@@ -13,6 +15,7 @@ public class ChevalCourse {
     private Cheval cheval;
     private Course course;
     private int position;
+    private Time temps;
 
     public ChevalCourse() {
     }
@@ -39,6 +42,14 @@ public class ChevalCourse {
 
     public void setPosition(int position) {
         this.position = position;
+    }
+
+    public Time getTemps() {
+        return temps;
+    }
+
+    public void setTemps(Time temps) {
+        this.temps = temps;
     }
     
     

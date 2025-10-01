@@ -1,6 +1,7 @@
 package database;
 
 
+import static database.DaoVente.resultatRequete;
 import model.Cheval;
 import model.Race;
 
@@ -9,6 +10,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import model.ChevalCourse;
+import model.Course;
 import model.Lot;
 
 public class DaoCheval {
@@ -41,6 +44,46 @@ public class DaoCheval {
             System.out.println("La requête de getLesChevaux a généré une exception SQL");
         }
         return lesChevaux;
+    }
+    
+    public static ArrayList<ChevalCourse> getLesCoursesByCheval(Connection cnx, int idCheval) {
+        ArrayList<ChevalCourse> lesCoursesChevaux = new ArrayList<ChevalCourse>();
+        try {
+            requeteSql = cnx.prepareStatement(
+                "SELECT c.id as c_id, co.id as co_id, c.nom as c_nom, co.nom as co_nom, cc.position as cc_position, cc.temps as cc_temps " +
+                "FROM chevalcourse cc " +
+                "INNER JOIN cheval c ON cc.cheval_id = c.id " +
+                "INNER JOIN course co ON cc.course_id = co.id " +
+                "WHERE c.id = ? "        
+            );
+            requeteSql.setInt(1, idCheval);
+            
+            resultatRequete = requeteSql.executeQuery();
+            while (resultatRequete.next()) {
+                ChevalCourse cc = new ChevalCourse();
+                cc.setPosition(resultatRequete.getInt("cc_position"));
+                cc.setTemps(resultatRequete.getTime("cc_temps"));
+                
+                Cheval cheval = new Cheval();
+                cheval.setId(resultatRequete.getInt("c_id"));
+                cheval.setNom(resultatRequete.getString("c_nom"));
+                
+                cc.setCheval(cheval);
+                
+                Course course = new Course();
+                course.setId(resultatRequete.getInt("co_id"));
+                course.setNom(resultatRequete.getString("co_nom"));
+                
+                cc.setCourse(course);
+                
+                lesCoursesChevaux.add(cc);
+                
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            System.out.println("La requête de getLesChevaux a généré une exception SQL");
+        }
+        return lesCoursesChevaux;
     }
     
     
