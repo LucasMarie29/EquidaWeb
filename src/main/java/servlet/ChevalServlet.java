@@ -16,6 +16,7 @@ import jakarta.servlet.annotation.*;
 import model.Cheval;
 import model.Race;
 import java.time.LocalDate;
+import model.ChevalCourse;
 
 @WebServlet(name = "chevalServlet", value = "/cheval-servlet/*")
 public class ChevalServlet extends HttpServlet {
@@ -46,9 +47,13 @@ public class ChevalServlet extends HttpServlet {
             try {
                 int idCheval = Integer.parseInt(request.getParameter("idCheval"));
                 Cheval leCheval = DaoCheval.getLeCheval(cnx, idCheval);
+                ArrayList<ChevalCourse> lesChevauxCourses = DaoCheval.getLesCoursesByCheval(cnx, idCheval);
 
                 if (leCheval != null) {
                     request.setAttribute("pLeCheval", leCheval);
+                    System.out.println("taille liste = " + lesChevauxCourses.size());
+                    request.setAttribute("pLesCoursesChevaux", lesChevauxCourses);
+                    
                     this.getServletContext().getRequestDispatcher("/WEB-INF/views/cheval/show.jsp").forward(request, response);
                 } else {
                     response.sendRedirect(request.getContextPath() + "/cheval-servlet/lister");
