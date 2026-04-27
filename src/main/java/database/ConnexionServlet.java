@@ -21,20 +21,23 @@ public class ConnexionServlet implements ServletContextListener {
             String database = System.getenv("MARIADB_DATABASE");
             String user     = System.getenv("MARIADB_USER");
             String password = System.getenv("MARIADB_PASSWORD");
+            
+            System.out.println("DEBUG HOST: '" + host + "'");
+            System.out.println("DEBUG PORT: '" + port + "'");
 
-            // Sécurité : Si les variables Railway ne sont pas chargées, on met des valeurs par défaut
-            if (host == null) host = "127.0.0.1";
+            if (host == null || host.isEmpty() || host.equals("null")) {
+                host = "faithful-curiosity.railway.internal";
+            }
             if (port == null) port = "3306";
-            if (database == null) database = "railway"; // ou le nom de ta base
+            if (database == null) database = "equida";
             if (user == null) user = "root";
 
             String url = "jdbc:mariadb://" + host + ":" + port + "/" + database;
             System.out.println("Tentative de connexion à : " + url);
 
-            // Ajout d'un timeout pour ne pas bloquer le serveur si la BDD est lente
+   
             cnx = DriverManager.getConnection(url, user, password);
 
-            // On stocke la connexion dans le contexte pour que les autres servlets y accèdent
             servletContext.setAttribute("connection", cnx);
             System.out.println("Connexion opérationnelle vers : " + url);
 
