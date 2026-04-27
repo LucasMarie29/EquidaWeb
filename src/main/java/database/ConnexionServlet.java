@@ -28,9 +28,16 @@ public class ConnexionServlet implements ServletContextListener {
             if (host == null || host.isEmpty() || host.equals("null")) {
                 host = "faithful-curiosity.railway.internal";
             }
-            if (port == null) port = "3306";
-            if (database == null) database = "equida";
-            if (user == null) user = "root";
+            if (port == null || port.isEmpty() || port.equals("null")) {
+                port = "3306";
+            }
+            if (database == null || database.isEmpty() || database.equals("null")) {
+                database = "equida";
+            }
+            if (user == null || user.isEmpty() || user.equals("null")) {
+                user = "root";
+            }
+   
 
             String url = "jdbc:mariadb://" + host + ":" + port + "/" + database;
             System.out.println("Tentative de connexion à : " + url);
