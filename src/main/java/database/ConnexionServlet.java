@@ -37,6 +37,9 @@ public class ConnexionServlet implements ServletContextListener {
             if (user == null || user.isEmpty() || user.equals("null")) {
                 user = "root";
             }
+            if (password == null || password.isEmpty() || password.equals("null")) {
+                password = "MPdur@biliT";
+            }
    
 
             String url = "jdbc:mariadb://" + host + ":" + port + "/" + database;
