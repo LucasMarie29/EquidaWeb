@@ -11,30 +11,39 @@ public class ConnexionServlet implements ServletContextListener {
 
     public void contextInitialized(ServletContextEvent event) {
         ServletContext servletContext = event.getServletContext();
-        System.out.println("INITCONNEXION" + servletContext.getContextPath());
         try {
             Class.forName("org.mariadb.jdbc.Driver");
             System.out.println("Pilote Mariadb JDBC chargé");
-            try {
-                String host     = System.getenv("MARIADB_HOST");
-                String port     = System.getenv("MARIADB_PORT");
-                String database = System.getenv("MARIADB_DATABASE");
-                String user     = System.getenv("MARIADB_USER");
-                String password = System.getenv("MARIADB_PASSWORD");
 
-                String url = "jdbc:mariadb://" + host + ":" + port + "/" + database;
-                System.out.println("Tentative de connexion à : " + url);
+            // Récupération des variables avec des valeurs de secours (defaults) pour éviter le "null"
+            String host     = System.getenv("MARIADB_HOST");
+            String port     = System.getenv("MARIADB_PORT");
+            String database = System.getenv("MARIADB_DATABASE");
+            String user     = System.getenv("MARIADB_USER");
+            String password = System.getenv("MARIADB_PASSWORD");
 
-                cnx = DriverManager.getConnection(url, user, password);
-                servletContext.setAttribute("connection", cnx);
-                System.out.println("Connexion opérationnelle : " + url);
-            } catch (SQLException e) {
-                e.printStackTrace();
-                System.out.println("Erreur lors de l'établissement de la connexion");
-            }
+            // Sécurité : Si les variables Railway ne sont pas chargées, on met des valeurs par défaut
+            if (host == null) host = "127.0.0.1";
+            if (port == null) port = "3306";
+            if (database == null) database = "railway"; // ou le nom de ta base
+            if (user == null) user = "root";
+
+            String url = "jdbc:mariadb://" + host + ":" + port + "/" + database;
+            System.out.println("Tentative de connexion à : " + url);
+
+            // Ajout d'un timeout pour ne pas bloquer le serveur si la BDD est lente
+            cnx = DriverManager.getConnection(url, user, password);
+
+            // On stocke la connexion dans le contexte pour que les autres servlets y accèdent
+            servletContext.setAttribute("connection", cnx);
+            System.out.println("Connexion opérationnelle vers : " + url);
+
         } catch (ClassNotFoundException e) {
+            System.out.println("ERREUR : Pilote JDBC non trouvé.");
             e.printStackTrace();
-            System.out.println("Erreur lors du chargement du pilote");
+        } catch (SQLException e) {
+            System.out.println("ERREUR : Impossible de se connecter à la base de données.");
+            e.printStackTrace();
         }
     }
 
